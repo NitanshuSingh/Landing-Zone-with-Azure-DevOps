@@ -1,0 +1,51 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: tfsec
+    displayName: Tfsec
+    jobs:
+      - job: tfsec
+        displayName: Tfsec
+        steps:
+        - task: tfsec@1
+          inputs:
+            version: 'v1.26.0'
+            debug: true
+  - stage: initandplan
+    displayName: Terraform init & plan
+    jobs:
+      - job: initandplan
+        displayName: Terraform init & plan
+        steps:
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'connection-1'
+            backendAzureRmResourceGroupName: 'Storage'
+            backendAzureRmStorageAccountName: 'class1234567890'
+            backendAzureRmContainerName: 'sanidhya'
+            backendAzureRmKey: 'pipeline.tfstate'
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'connection-1'
+  - stage: initandapply
+    displayName: Terraform init & apply
+    jobs:
+    - job: initandapply
+      displayName: Terraform init & apply
+      steps:
+      - task: TerraformTaskV4@4
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'connection-1'
+          backendAzureRmResourceGroupName: 'Storage'
+          backendAzureRmStorageAccountName: 'class1234567890'
+          backendAzureRmContainerName: 'sanidhya'
+          backendAzureRmKey: 'pipeline.tfstate'
