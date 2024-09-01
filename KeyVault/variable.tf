@@ -1,0 +1,2 @@
+variable "kv" {}
+variable "secret" {}
