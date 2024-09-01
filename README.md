@@ -1,20 +1,35 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This Projects gives you a basic understanding of creating landing zone by writing CI/CD pipeline to ensure end-to-end automation. 
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Here, we can get familiar with writing terraform configuration files in HCL and deploying it throgh Azure DevOps CI/CD pipeline. In this section we have created below resources:
+
+1.	Resource Group - 1
+2.	Virtual Network - to secure our resources in cloud
+3.	3 Subnets - each subnet for vm and bastion
+4.	Storage Account + Container - for storing tfstate file
+5.  Virtual Machines - 2
+6.  Azure Bastion - To access VMs in Vnet
+7.  Key Vault - to store secret data
+
+# Tools Used
+VS code
+Terraform
+git
+Azure DevOps
+Azure Portal
+
+# Pre-requisites
+Configure self hosted agent or you should have Azure hosted agent
+Create Service Principal from Azure Portal
+ - Create secret and certificate
+ - And add contributor role to it.
+Create Service Connection from Azure DevOps
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+We have written CI/CD pipeline to deploy the resources and can be tested by accessing VMs through Bastion. 
 
 # Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+You are always welcome to contribute to this project by adding other security services azure gateway, firewall, etc.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
