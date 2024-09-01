@@ -49,3 +49,8 @@ stages:
           backendAzureRmStorageAccountName: 'class1234567890'
           backendAzureRmContainerName: 'sanidhya'
           backendAzureRmKey: 'pipeline.tfstate'
+      - task: TerraformTaskV4@4
+        inputs:
+          provider: 'azurerm'
+          command: 'apply'
+          environmentServiceNameAzureRM: 'connection-1'
